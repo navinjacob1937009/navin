@@ -1,0 +1,222 @@
+(Q.1)select the average year from birth and death growth rates?
+
+SELECT AVG(year)
+FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates`
+
+f0_
+2016.953925028288
+
+
+(Q.2) Select a table from international census with birth and death rates. Limit observations to 28?
+
+SELECT * FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates` 
+LIMIT 28
+
+country_code	country_name	year	crude_birth_rate	crude_death_rate	net_migration	rate_natural_increase	growth_rate
+CD	Chad	1993	47.8	18.71	-23.09	2.909	0.6
+CD	Chad	1994	47.71	18.31	-0.2	2.94	2.92
+CD	Chad	1995	48.02	17.9	21.95	3.012	5.207
+CD	Chad	1996	48.35	17.51	-0.14	3.084	3.07
+CD	Chad	1997	48.74	17.25	0.18	3.149	3.168
+CD	Chad	1998	49.24	17.01	-0.01	3.223	3.221
+CD	Chad	1999	49.82	16.82	1.9	3.3	3.491
+CD	Chad	2000	50.48	16.64	-0.76	3.384	3.308
+CD	Chad	2001	51.2	16.32	0.34	3.488	3.522
+CD	Chad	2002	51.95	16.01	2.08	3.594	3.802
+CD	Chad	2003	51.75	15.68	11.56	3.607	4.764
+CD	Chad	2004	51.56	15.3	11.57	3.626	4.783
+CD	Chad	2005	51.25	14.93	1.71	3.632	3.803
+CD	Chad	2006	50.87	14.57	2.0	3.63	3.83
+CD	Chad	2007	50.38	14.2	-1.27	3.618	3.491
+CD	Chad	2008	49.76	13.84	3.06	3.592	3.899
+CD	Chad	2009	49.19	13.47	0.59	3.572	3.631
+CD	Chad	2010	48.59	13.11	0.68	3.548	3.615
+CD	Chad	2011	47.97	12.77	2.17	3.52	3.738
+CD	Chad	2012	47.35	12.43	0.56	3.492	3.548
+CD	Chad	2013	46.71	12.1	3.71	3.461	3.831
+CD	Chad	2014	45.88	11.78	1.33	3.41	3.543
+CD	Chad	2015	45.09	11.46	-3.57	3.363	3.005
+CD	Chad	2016	44.33	11.14	1.3	3.319	3.45
+CD	Chad	2017	43.64	10.82	-0.15	3.282	3.267
+CD	Chad	2018	42.97	10.52	-0.14	3.245	3.23
+CD	Chad	2019	42.31	10.24	-0.14	3.207	3.193
+CD	Chad	2020	41.67	9.97	-0.14	3.17	3.157
+
+
+(Q.3) Calculate sum of years of birth and death growth rates?
+
+SELECT SUM(year)
+FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates`
+
+f0_
+30292631
+
+
+(Q.4) Use the count option of years and obtain results for question 3?
+
+SELECT COUNT(year)
+FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates`
+
+f0_
+15019
+
+
+(Q.5) Select midyear population dataset and obtain order by observations?
+
+SELECT * FROM `bigquery-public-data.census_bureau_international.midyear_population`
+ORDER BY midyear_population
+LIMIT 10
+
+country_code	country_name	year	midyear_population
+TB	Saint Barthelemy	1950	2028
+TB	Saint Barthelemy	1951	2040
+TB	Saint Barthelemy	1952	2053
+TB	Saint Barthelemy	1953	2066
+TB	Saint Barthelemy	1954	2079
+TB	Saint Barthelemy	1955	2092
+TB	Saint Barthelemy	1956	2105
+TB	Saint Barthelemy	1957	2118
+TB	Saint Barthelemy	1958	2132
+TB	Saint Barthelemy	1959	2145
+
+
+
+(Q.6) Select crude birth rate and obtain query for 35 and 48 ratios?
+
+SELECT crude_birth_rate
+FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates`
+WHERE crude_birth_rate BETWEEN 35 AND 48
+LIMIT 10
+
+crude_birth_rate
+47.8
+47.71
+47.97
+47.35
+46.71
+45.88
+45.09
+44.33
+43.64
+42.97
+
+
+(Q.7) Use various variables as columns in the main dataset and create an order by?
+
+
+SELECT * FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates` 
+ORDER BY rate_natural_increase, crude_birth_rate, crude_death_rate, growth_rate
+LIMIT 30
+
+
+country_code	country_name	year	crude_birth_rate	crude_death_rate	net_migration	rate_natural_increase	growth_rate
+CB	Cambodia	1975	32.78	65.43	-6.21	-3.265	-3.885
+RW	Rwanda	1994	33.88	63.15	-354.13	-2.927	-48.34
+CB	Cambodia	1976	33.72	61.42	-6.74	-2.77	-3.443
+CB	Cambodia	1977	34.55	59.94	-6.37	-2.539	-3.176
+MN	Monaco	2050	3.62	27.57	13.42	-2.395	-1.053
+CB	Cambodia	1978	35.25	59.0	-9.9	-2.375	-3.364
+MN	Monaco	2049	3.72	27.06	13.28	-2.334	-1.006
+MN	Monaco	2048	3.88	26.56	13.15	-2.268	-0.953
+MN	Monaco	2047	4.01	25.96	13.03	-2.195	-0.893
+MN	Monaco	2046	4.17	25.42	12.92	-2.125	-0.833
+MN	Monaco	2045	4.32	24.83	12.81	-2.051	-0.769
+SO	Somalia	1992	39.32	59.5	-30.25	-2.018	-5.043
+MN	Monaco	2044	4.48	24.23	12.72	-1.975	-0.703
+MN	Monaco	2043	4.64	23.63	12.64	-1.899	-0.635
+MN	Monaco	2042	4.8	23.02	12.56	-1.822	-0.565
+MN	Monaco	2041	4.97	22.4	12.49	-1.743	-0.494
+MN	Monaco	2040	5.13	21.77	12.44	-1.664	-0.42
+MN	Monaco	2039	5.27	21.15	12.39	-1.588	-0.35
+MN	Monaco	2038	5.37	20.5	12.35	-1.513	-0.278
+SB	Saint Pierre and Miquelon	2050	6.54	21.05	0.0	-1.451	-1.451
+MN	Monaco	2037	5.51	19.87	12.32	-1.436	-0.203
+SB	Saint Pierre and Miquelon	2049	6.45	20.74	-0.56	-1.429	-1.485
+SB	Saint Pierre and Miquelon	2047	6.26	20.4	-1.36	-1.414	-1.55
+SB	Saint Pierre and Miquelon	2048	6.35	20.43	-0.83	-1.408	-1.491
+SB	Saint Pierre and Miquelon	2046	6.16	20.09	-1.34	-1.393	-1.527
+MN	Monaco	2036	5.6	19.22	12.3	-1.362	-0.132
+SB	Saint Pierre and Miquelon	2045	6.33	19.78	-1.85	-1.345	-1.53
+SB	Saint Pierre and Miquelon	2044	6.24	19.49	-2.08	-1.325	-1.533
+SB	Saint Pierre and Miquelon	2043	6.14	19.19	-2.3	-1.305	-1.535
+MN	Monaco	2035	5.68	18.59	12.29	-1.291	-0.061
+
+(Q.8)  What is minimum year from the selected table corresponding to birth and death growth rates?
+
+SELECT MIN(year)
+FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates`
+
+f0_
+1950
+
+
+(Q.9) What is maximum year from the selected table corresponding to birth and death growth rates?
+
+SELECT MAX(year)
+FROM `bigquery-public-data.census_bureau_international.birth_death_growth_rates`
+
+f0_
+2050
+
+
+
+(Q.10) If fertility rates of age specific data and birth and death rates are followed 
+
+select fertility1.country_name,fertility2.crude_birth_rate
+from `bigquery-public-data.census_bureau_international.age_specific_fertility_rates`
+as fertility1
+join `bigquery-public-data.census_bureau_international.birth_death_growth_rates` as fertility2
+ON (fertility1.country_name=fertility2.country_name)
+
+country_name	crude_birth_rate
+Aruba	18.47
+Aruba	18.89
+Aruba	19.25
+Aruba	19.54
+Aruba	19.7
+Aruba	19.75
+Aruba	19.74
+Aruba	19.66
+Aruba	19.54
+Aruba	19.39
+Aruba	19.29
+Aruba	18.6
+Aruba	18.05
+Aruba	16.89
+Aruba	17.75
+Aruba	17.48
+Aruba	16.9
+Aruba	14.91
+Aruba	14.04
+Aruba	13.31
+Aruba	13.16
+Aruba	13.03
+Aruba	12.95
+Aruba	12.91
+Aruba	12.87
+Aruba	12.84
+Aruba	12.83
+Aruba	12.81
+Aruba	12.79
+Aruba	12.77
+Aruba	12.78
+Aruba	12.76
+Aruba	12.72
+Aruba	12.65
+Aruba	12.56
+Aruba	12.49
+Aruba	12.41
+Aruba	12.33
+Aruba	12.21
+Aruba	12.08
+Aruba	11.96
+Aruba	11.83
+Aruba	11.71
+Aruba	11.58
+Aruba	11.46
+Aruba	11.33
+Aruba	11.2
+Aruba	11.1
+Aruba	11.02
+Aruba	10.94
+
